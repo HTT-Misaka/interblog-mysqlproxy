@@ -1,0 +1,23 @@
+[mysql-proxy]
+# 运行mysql-proxy用户
+user=root
+# mysql-proxy连接后端mysql服务器的用户
+admin-username=root
+# mysql-proxy连接后端mysql服务器的密码
+
+# 代理的监听地址端口，默认端口4040
+proxy-address=0.0.0.0:3307
+#指定后端主master写入数据
+proxy-backend-addresses=mysql-0.mysql
+#指定后端从slave读取数据
+proxy-read-only-backend-addresses=mysql-1.mysql
+#指定读写分离配置文件位置
+proxy-lua-script=/opt/mysql-proxy/mysql-proxy085/share/doc/mysql-proxy/rw-splitting.lua
+#日志位置
+log-file=/opt/mysql-proxy/mysql-proxy085/logs/mysql-proxy.log
+#定义log日志级别，由高到低分别有(error|warning|info|message|debug)
+log-level=debug
+#以守护进程方式运行
+daemon=false
+#mysql-proxy崩溃时，尝试重启
+keepalive=true
